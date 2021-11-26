@@ -1,7 +1,11 @@
 #!/bin/bash
 set -o errexit
 
-FORMULA=nicholasdille/tap/dockerd
+if test -z "$1"; then
+    echo "Usage: brew direct <formula>"
+    exit 1
+fi
+FORMULA=$1
 
 BOTTLES=$(brew ruby <<EOF
 PREFIX = "/home/linuxbrew/.linuxbrew/Homebrew/Library/Taps"
